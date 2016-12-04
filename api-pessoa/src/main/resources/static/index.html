@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>API-Pessoa</title>    
+        <link href="css/materialize.min.css" rel="stylesheet">   
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body ng-app="apiPessoa" ng-controller="apiCtrl">
+        <div class="container">
+            <div class="page-header">
+                <h3>Integrando com a API</h3>
+            </div>
+            <form class="form-horizontal" name="formCad" id="formCad" ng-submit="enviaFormulario();">
+                <div class="row">
+                    <div class="input-field col s10">
+                        <input type="text" class="validate" id="nome" ng-model="pessoa.name">
+                        <label for="nome">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10">
+                        <input type="email" class="validate" id="mail" ng-model="pessoa.mail">
+                        <label for="mail" class="col-sm-2 control-label">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10">
+                        <input type="text" class="form-control" id="telefone" ng-model="pessoa.phone">
+                        <label for="telefone" class="validate">Telefone</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s10">
+                        <button type="submit" class="btn btn-primary">{{descbotao}}</button>
+                        <button type="reset" ng-click="resetForm();" class="btn btn-default">Limpar</button>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="pessoa in pessoas">
+                    <td>{{pessoa.name}}</td>
+                    <td>{{pessoa.mail}}</td>
+                    <td>{{pessoa.phone}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" ng-click="alterar(pessoa);">Alterar</button>
+                        <button type="button" class="btn btn-danger" ng-click="excluir(pessoa);">Excluir</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/js.js"></script>
+        <script src="js/materialize.min.js"></script>
+    </body>
+</html>
